@@ -1,0 +1,181 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+.page {
+  font-family: 'Open-Sans', sans-serif;
+  font-weight: 400;
+  min-width: 320px;
+}
+
+.container {
+  max-width: 1330px;
+  margin: 0 auto;
+  padding-top: 65px;
+  padding-bottom: 42px;
+ }
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.btn-reset {
+  padding: 0;
+  outline: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: "Open-Sans";
+  src: local(""),
+  url("../fonts/OpenSansSemiBold.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open-Sans";
+  src: local(""),
+  url("../fonts/OpenSansRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open-Sans";
+  src: local(""),
+  url("../fonts/OpenSansLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+.main {
+  background-color: #FFF6ED;
+}
+
+.main__box {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 40px;
+  padding: 0;
+  font-size: 40px;
+  text-align: center;
+}
+
+.title__middle {
+  padding: 0;
+  font-size: 30px;
+  display: inline;
+}
+
+.orange {
+  margin: 0;
+  padding: 0;
+  color: #FF7A00;
+}
+
+.item__descr {
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
+  font-size: 16px;
+  line-height: 170%;
+  max-width: 375px;
+}
+
+.icon {
+  width: 375px;
+  height: 288px;
+  margin-bottom: 26px;
+}
+
+.footer__title {
+  margin: 0;
+  margin-bottom: 15px;
+  padding: 0;
+  font-size: 40px;
+  line-height: 130%;
+  width: 592px;
+}
+
+.footer__box {
+  display: flex;
+  flex-direction: row;
+  gap: 186px;
+}
+
+.footer__text {
+  display: flex;
+  flex-direction: column;
+  width: 592px;
+}
+
+.footer {
+  background-image: url(ellipse.svg);
+  background-repeat: no-repeat;
+  background-position: 73% 120%;
+}
+
+.footer__descr {
+  margin: 0;
+  line-height: 160%;
+}
+
+.social__wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.social__box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 90px;
+  width: 550px;
+  padding-top: 26px;
+  margin-bottom: 30px;
+}
+
+.social__box-second {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 80px;
+  width: 400px;
+}
+
+.social__icon {
+  width: 70px;
+  height: 70px;
+}
+
+
