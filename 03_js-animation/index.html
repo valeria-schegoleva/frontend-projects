@@ -7,6 +7,7 @@
   <title>Animation</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <!-- <link rel="js" href="js/script.js"> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 </head>
 
@@ -117,8 +118,33 @@
   <script>
     gsap.from([".hero__title", ".hero__descr" , ".hero__btn"] , {
       duration: 1.5,
-      y: 30,
+      y: 50,
       opacity: 0});
+    gsap.from([".photos-wrap img"] , {
+      duration: 2.5,
+      opacity: 0,
+      stagger: 0.5});
+  </script>
+  <script>
+      var menu = document.querySelector(".menu");
+      var burger = document.querySelector(".burger");
+      var close = document.querySelector(".close");
+      var menuTl = gsap.timeline({paused: true});
+
+      menuTl.fromTo(menu, {display: "none", opacity: 0} , {display: "block", opacity: 1, duration: 0.3});
+
+      burger.onclick = function() {
+        menuTl.play();
+        burger.style.display = "none";
+        close.style.display = "block";
+      };
+      close.onclick = function() {
+        menuTl.reverse().then(() => {
+        menu.style.display = "none";
+      });
+        close.style.display = "none";
+        burger.style.display = "block";
+       };
   </script>
 </body>
 
