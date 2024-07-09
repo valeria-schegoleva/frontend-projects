@@ -11,6 +11,14 @@ const htmlmin = require('gulp-htmlmin');
 const notify = require('gulp-notify');
 const image = require('gulp-image');
 const concat = require('gulp-concat');
+const gulpif = require('gulp-if');
+
+let prod = false;
+
+const isProd = (done) => {
+  prod = true;
+  done();
+}
 
 const clean = () => {
 	return del(['app/*'])
@@ -30,30 +38,32 @@ const svgSprites = () => {
 
 const styles = () => {
   return src('./src/styles/**/*.css')
+    .pipe(gulpif(!prod, sourcemaps.init()))
     .pipe(concat('main.css'))
     .pipe(autoprefixer({
       cascade: false,
     }))
-    .pipe(cleanCSS({ level: 2 }))
-    .pipe(sourcemaps.write('.'))
-    .pipe(dest('./app/styles'))
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(prod, cleanCSS({
+      level: 2
+    })))
+    .pipe(gulpif(!prod, sourcemaps.write('.')))
+    .pipe(dest('dist'))
     .pipe(browserSync.stream());
 };
 
 const scripts = () => {
   return src(
     ['./src/js/components/**.js', './src/js/main.js'])
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(!prod, sourcemaps.init()))
 		.pipe(babel({
 			presets: ['@babel/env']
 		}))
-    .pipe(concat('main.js'))
-    .pipe(uglify({
+    .pipe(gulpif(prod, concat('main.js')))
+    .pipe(gulpif(prod, uglify({
       toplevel: true
-    }).on("error", notify.onError()))
-    .pipe(sourcemaps.write('.'))
-    .pipe(dest('./app/js'))
+    }).on("error", notify.onError())))
+    .pipe(gulpif(!prod, sourcemaps.write()))
+    .pipe(dest('dist'))
     .pipe(browserSync.stream());
 }
 
@@ -94,15 +104,16 @@ const watchFiles = () => {
 
 const htmlMinify = () => {
 	return src('src/*.html')
-		.pipe(htmlmin({
-			collapseWhitespace: true
-		}))
+    .pipe(gulpif(prod, htmlmin({
+      collapseWhitespace: true
+    })))
 		.pipe(dest('app'))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream())
 }
 
 exports.styles = styles;
 exports.htmlMinify = htmlMinify;
 exports.scripts = scripts;
 
-exports.default = series(clean, scripts, styles, resources, images, svgSprites, htmlMinify, watchFiles);
+exports.dev = series(clean, scripts, styles, resources, images, svgSprites, htmlMinify, watchFiles);
+exports.build = series(isProd, clean, scripts, styles, resources, images, svgSprites, htmlMinify);
