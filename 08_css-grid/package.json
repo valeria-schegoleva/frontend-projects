@@ -1,0 +1,35 @@
+{
+  "name": "08_css-grid",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "new project",
+  "scripts": {
+  "dev": "gulp --gulpfile gulpfile.mjs dev",
+  "build": "gulp --gulpfile gulpfile.mjs build"
+  },
+  "author": "valeria",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.24.6",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.26.14",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-image": "^6.2.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svg-sprite": "^1.5.0",
+    "gulp-uglify-es": "^2.0.0"
+  },
+  "dependencies": {
+    "gulp-if": "^3.0.0"
+  }
+}
