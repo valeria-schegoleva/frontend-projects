@@ -25,7 +25,7 @@ const isProd = (done) => {
 const clean = () => del(['app/*']);
 
 const svgSprites = () => {
-  return src('./src/img/svg/**.svg')
+  return src('./src/img/**.svg')
     .pipe(svgSprite({
       mode: {
         stack: {
@@ -104,7 +104,7 @@ const htmlMinify = () => {
     .pipe(bs.stream());
 }
 
-export { styles, htmlMinify, scripts };
+export { styles, htmlMinify, scripts, svgSprites };
 
 export const dev = series(clean, scripts, styles, resources, images, svgSprites, htmlMinify, watchFiles);
 export const build = series(isProd, clean, scripts, styles, resources, images, svgSprites, htmlMinify);
