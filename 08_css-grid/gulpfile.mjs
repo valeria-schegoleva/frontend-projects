@@ -12,7 +12,7 @@ import notify from 'gulp-notify';
 import concat from 'gulp-concat';
 import gulpif from 'gulp-if';
 
-const { src, dest, series } = gulp;
+const { src, dest, series, watch } = gulp;
 const bs = browserSync.create();
 
 let prod = false;
@@ -95,7 +95,22 @@ const htmlMinify = () => {
     .pipe(bs.stream());
 }
 
+const watchFiles = () => {
+  bs.init({
+    server: {
+      baseDir: "./app"
+    },
+  });
+
+  gulp.watch('./src/styles/**/*.css', styles);
+  gulp.watch('./src/js/**/*.js', scripts);
+  gulp.watch('./src/**/*.html', htmlMinify);
+  gulp.watch('./src/resources/**', resources);
+  gulp.watch('./src/img/**/*.{jpg,jpeg,png,svg}', images);
+  gulp.watch('./src/img/svg/**.svg', svgSprites);
+};
+
 export { styles, htmlMinify, scripts, svgSprites };
 
-export const dev = series(clean, scripts, styles, fonts, resources, images, svgSprites, htmlMinify);
+export const dev = series(clean, scripts, styles, fonts, resources, images, svgSprites, htmlMinify, watchFiles);
 export const build = series(isProd, clean, scripts, fonts, styles, resources, images, svgSprites, htmlMinify);
