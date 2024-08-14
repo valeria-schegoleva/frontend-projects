@@ -12,7 +12,7 @@ import notify from 'gulp-notify';
 import concat from 'gulp-concat';
 import gulpif from 'gulp-if';
 
-const { src, dest, series, watch } = gulp;
+const { src, dest, series } = gulp;
 const bs = browserSync.create();
 
 let prod = false;
@@ -33,7 +33,8 @@ const svgSprites = () => {
         }
       },
     }))
-    .pipe(dest('./app/img'));
+    .pipe(dest('./app/img'))
+    .pipe(bs.stream());
 }
 
 const styles = () => {
@@ -45,8 +46,13 @@ const styles = () => {
     }))
     .pipe(gulpif(prod, cleanCSS({ level: 2 })))
     .pipe(gulpif(!prod, sourcemaps.write('.')))
-    .pipe(dest('dist'))
+    .pipe(dest('app/styles'))
     .pipe(bs.stream());
+};
+
+const fonts = () => {
+  return src('./src/fonts/**/*.{woff2,ttf}')
+  .pipe(dest('app/fonts'));
 };
 
 const scripts = () => {
@@ -60,7 +66,7 @@ const scripts = () => {
       toplevel: true
     }).on("error", notify.onError())))
     .pipe(gulpif(!prod, sourcemaps.write()))
-    .pipe(dest('dist'))
+    .pipe(dest('app/js'))
     .pipe(bs.stream());
 }
 
@@ -81,21 +87,6 @@ const images = async () => {
     .pipe(dest('./app/img'));
 };
 
-const watchFiles = () => {
-  bs.init({
-    server: {
-      baseDir: "./src"
-    },
-  });
-
-  watch('./src/**/*.css', styles);
-  watch('./src/**/*.html', htmlMinify);
-  watch('./src/js/**/*.js', scripts);
-  watch('./src/resources/**', resources);
-  watch('./src/img/*.{jpg,jpeg,png,svg}', images);
-  watch('./src/img/**/*.{jpg,jpeg,png}', images);
-  watch('./src/img/svg/**.svg', svgSprites);
-}
 
 const htmlMinify = () => {
   return src('src/*.html')
@@ -106,5 +97,5 @@ const htmlMinify = () => {
 
 export { styles, htmlMinify, scripts, svgSprites };
 
-export const dev = series(clean, scripts, styles, resources, images, svgSprites, htmlMinify, watchFiles);
-export const build = series(isProd, clean, scripts, styles, resources, images, svgSprites, htmlMinify);
+export const dev = series(clean, scripts, styles, fonts, resources, images, svgSprites, htmlMinify);
+export const build = series(isProd, clean, scripts, fonts, styles, resources, images, svgSprites, htmlMinify);
