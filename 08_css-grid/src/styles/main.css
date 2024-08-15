@@ -215,6 +215,20 @@ img {
   font-size: 16px;
   background-color: var(--orange);
   color: var(--white);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.large__btn:focus-visible {
+  background-color: #BC572B;
+}
+
+.large__btn:hover:not(:focus-visible) {
+  background-color: #FF6E30;
+  outline: #CE4307 solid 3px;
+}
+
+.large__btn:active:not(:focus-visible) {
+  background-color: #CE4307;
 }
 
 .large__text {
@@ -691,12 +705,13 @@ img {
 }
 
 .footer__logo {
-  display: flex;
-  flex-direction: column;
+  gap: 6px;
   max-width: 263px;
+  align-items: flex-start;
 }
 
 .footer__logo-icon {
+  width: 190px;
   height: 30px;
 }
 
@@ -722,6 +737,7 @@ img {
 
 .footer__social {
   display: flex;
+  justify-content: center;
   gap: 20px;
 }
 
