@@ -130,11 +130,40 @@ img {
   padding-bottom: 30px;
 }
 
+.header__logo {
+  height: 35px;
+  width: 190px;
+}
+
+.header__logo:focus-visible {
+  outline: 2px #BC572B solid;
+  outline-offset: 5px;
+}
+
 .header__nav {
   display: flex;
   gap: 80px;
   font-size: 16px;
   color: var(--white);
+}
+
+.nav__link {
+  transition: color 0.3s ease-in-out;
+}
+
+.nav__link:hover:not(:focus-visible) {
+  color: #FF6E30;
+}
+
+.nav__link:focus-visible {
+  background-color: #BC572B;
+  color: #ffffff;
+  padding: 4px 10px;
+  outline: none;
+}
+
+.nav__link:active:not(:focus-visible) {
+  color: #CE4307;
 }
 
 .hero__content {
@@ -215,7 +244,8 @@ img {
   font-size: 16px;
   background-color: var(--orange);
   color: var(--white);
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+  transition: outline-width 150ms ease-in-out, outline-color 150ms ease-in-out;
 }
 
 .large__btn:focus-visible {
@@ -295,6 +325,21 @@ img {
   font-weight: 700;
   color: var(--white);
   background-color: var(--orange);
+  transition: background-color 0.3s ease-in-out;
+  transition: outline-width 150ms ease-in-out, outline-color 150ms ease-in-out;
+}
+
+.about__btn:focus-visible {
+  background-color: #BC572B;
+}
+
+.about__btn:hover:not(:focus-visible) {
+  background-color: #FF6E30;
+  outline: #CE4307 solid 3px;
+}
+
+.about__btn:active:not(:focus-visible) {
+  background-color: #CE4307;
 }
 
 .about__form {
@@ -485,6 +530,20 @@ img {
   background-color: none;
   outline: 3px solid var(--orange);
   color: var(--white);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.projects__btn:focus-visible {
+  background-color: #BC572B;
+  outline: #FF6E30 solid 3px;
+}
+
+.projects__btn:hover:not(:focus-visible) {
+  background-color: #FF6E30;
+}
+
+.projects__btn:active:not(:focus-visible) {
+  background-color: #CE4307;
 }
 
 .projects__large2 {
@@ -585,8 +644,8 @@ img {
   background-repeat: no-repeat;
   width: 15px;
   height: 15px;
-  top: 120px;
-  right: 160px;
+  top: 90px;
+  right: 230px;
 }
 
 .contacts__grey {
@@ -628,22 +687,49 @@ img {
   width: 100%;
   height: 50px;
   border: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.contacts__form:hover:not(:focus-visible) {
+  cursor: pointer;
+}
+
+.contacts__form:focus-visible {
+  color: #CACACA;
+  outline: 1px #FF6E30 solid;
 }
 
 .contacts__form::placeholder {
+  transition: color 0.3s ease-in-out;
   padding-left: 23px;
 }
 
+.contacts__form:hover::-webkit-input-placeholder {
+  color: #FF6E30;
+}
+
 .contacts__form-comment {
+  cursor: pointer;
   background-color: #E9E9E9;
   margin-bottom: 20px;
   width: 100%;
   height: 150px;
   border: none;
+  transition: color 0.3s ease-in-out;
 }
 
 .contacts__form-comment::placeholder {
+  transition: color 0.3s ease-in-out;
   padding-left: 23px;
+}
+
+.contacts__form-comment:hover::-webkit-input-placeholder {
+  color: #FF6E30;
+}
+
+.contacts__form-comment:focus-visible {
+  color: #CACACA;
+  outline: 1px #FF6E30 solid;
 }
 
 .contacts__btn {
@@ -651,6 +737,21 @@ img {
   font-size: 16px;
   background-color: var(--orange);
   color: var(--white);
+  transition: background-color 0.3s ease-in-out;
+  transition: outline-width 150ms ease-in-out, outline-color 150ms ease-in-out;
+}
+
+.contacts__btn:focus-visible {
+  background-color: #BC572B;
+}
+
+.contacts__btn:hover:not(:focus-visible) {
+  background-color: #FF6E30;
+  outline: #CE4307 solid 3px;
+}
+
+.contacts__btn:active:not(:focus-visible) {
+  background-color: #CE4307;
 }
 
 .contacts__subtitle {
@@ -687,6 +788,11 @@ img {
   font-family: 'TT Firs Neue';
   font-size: 16px;
   color: #FF6E30;
+}
+
+.contacts__phone svg {
+  width: 22px;
+  height: 22px;
 }
 
 .footer {
@@ -738,6 +844,25 @@ img {
 .footer__social {
   display: flex;
   justify-content: center;
+  padding-top: 8px;
   gap: 20px;
+}
+
+.vk__icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* .vk__icon {
+  transition: fill 0.3s ease-in-out;
+}
+
+.vk__icon:hover:not(:focus-visible) {
+  fill: #FF6E30
+} */
+
+.ok__icon svg {
+  width: 30px;
+  height: 30px;
 }
 
