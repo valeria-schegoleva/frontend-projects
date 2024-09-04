@@ -694,12 +694,48 @@ img {
   transition: color 0.3s ease-in-out;
 }
 
+input[type="name"] {
+  padding-left: 35px;
+}
+
+input[type="name"]::-moz-placeholder {
+  padding-left: 0;
+}
+
+input[type="name"]::placeholder {
+  padding-left: 0;
+}
+
+input[type="email"] {
+  padding-left: 35px;
+}
+
+input[type="email"]::-moz-placeholder {
+  padding-left: 0;
+}
+
+input[type="email"]::placeholder {
+  padding-left: 0;
+}
+
+input[type="text"] {
+  padding-left: 35px;
+}
+
+input[type="text"]::-moz-placeholder {
+  padding-left: 0;
+}
+
+input[type="text"]::placeholder {
+  padding-left: 0;
+}
+
 .contacts__form:hover:not(:focus-visible) {
   cursor: pointer;
 }
 
 .contacts__form:focus-visible {
-  color: #CACACA;
+  color: #202020;
   outline: 1px #FF6E30 solid;
 }
 
@@ -744,7 +780,7 @@ img {
 }
 
 .contacts__form-comment:focus-visible {
-  color: #CACACA;
+  color: #202020;
   outline: 1px #FF6E30 solid;
 }
 
@@ -864,24 +900,49 @@ img {
   gap: 20px;
 }
 
+.vk__icon {
+  color: #CACACA;
+}
+
 .vk__icon svg {
   width: 30px;
   height: 30px;
+  transition: color 0.3s ease-in-out;
 }
 
-/* .vk__icon {
-  transition: fill 0.3s ease-in-out;
+.vk__icon:hover:not(:focus-visible) svg {
+  color: #FF6E30;
 }
 
-.vk__icon:hover:not(:focus-visible) {
-  fill: #FF6E30
-} */
+.vk__icon:focus-visible svg {
+  color: #BC572B;
+}
+
+.vk__icon:active:not(:focus-visible) svg {
+  color: #CE4307;
+}
+
+.ok__icon {
+  color: #CACACA;
+}
 
 .ok__icon svg {
   width: 30px;
   height: 30px;
+  transition: color 0.3s ease-in-out;
 }
 
+.ok__icon:hover:not(:focus-visible) svg {
+  color: #FF6E30;
+}
+
+.ok__icon:focus-visible svg {
+  color: #BC572B;
+}
+
+.ok__icon:active:not(:focus-visible) svg {
+  color: #CE4307;
+}
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
